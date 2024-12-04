@@ -13,9 +13,13 @@
         android:theme="@style/Theme.IngenieriaSoftware"
         tools:targetApi="31">
         <activity
+            android:name=".menuPrincipal"
+            android:exported="false"
+            android:label="@string/title_activity_menu_principal"
+            android:theme="@style/Theme.IngenieriaSoftware.NoActionBar" />
+        <activity
             android:name=".LoginActivity3"
-            android:exported="false" />
-        <!-- Asegúrate de que LoginActivity2 esté accesible -->
+            android:exported="false" /> <!-- Asegúrate de que LoginActivity2 esté accesible -->
         <activity
             android:name=".LoginActivity2"
             android:exported="true" /> <!-- LoginActivity es la actividad principal (MAIN) -->
