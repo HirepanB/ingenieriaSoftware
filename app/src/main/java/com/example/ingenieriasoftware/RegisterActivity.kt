@@ -6,11 +6,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class LoginActivity3 : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login3)
+        setContentView(R.layout.activity_register)
 
         // Encuentra los campos de entrada de texto y el botón
         val etUsername = findViewById<EditText>(R.id.etUsername)

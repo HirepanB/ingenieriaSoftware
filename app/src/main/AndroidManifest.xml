@@ -15,16 +15,15 @@
         <activity
             android:name=".menuPrincipal"
             android:exported="false"
-            android:label="@string/title_activity_menu_principal"
-            android:theme="@style/Theme.IngenieriaSoftware.NoActionBar" />
+            android:label="@string/title_activity_menu_principal"/>
         <activity
-            android:name=".LoginActivity3"
+            android:name=".RegisterActivity"
             android:exported="false" /> <!-- Asegúrate de que LoginActivity2 esté accesible -->
         <activity
-            android:name=".LoginActivity2"
+            android:name=".LoginActivity"
             android:exported="true" /> <!-- LoginActivity es la actividad principal (MAIN) -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

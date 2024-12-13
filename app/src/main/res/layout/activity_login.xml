@@ -1,97 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    android:background="#ffffff">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#cbddd1"
+    android:padding="16dp">
 
-    <!-- Contenedor Principal -->
-    <LinearLayout
-        android:id="@+id/container"
-        android:layout_width="248dp"
-        android:layout_height="433dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Título de la App -->
-        <TextView
-            android:id="@+id/tvAppTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="AppNtry"
-            android:textColor="#272727"
-            android:textSize="56sp"
-            android:textStyle="bold" />
+    <!-- Campo de texto para el nombre de usuario -->
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Nombre de usuario"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
-        <!-- Iconos de estrellas -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp" />
 
-            <ImageView
-                android:id="@+id/star1"
-                android:layout_width="58dp"
-                android:layout_height="58dp"
-                android:src="@drawable/estrella"
-                />
+    <!-- Botón para iniciar sesión -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:backgroundTint="#272727"
+        android:textColor="#ffff"
+        android:text="Iniciar Sesión"
 
-            <ImageView
-                android:id="@+id/star2"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/estrella"
-                 />
-
-            <ImageView
-                android:id="@+id/star3"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:src="@drawable/estrella"
-                 />
-        </LinearLayout>
-
-        <!-- Foto de perfil -->
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/logo"
-            android:scaleType="centerCrop"/>
-
-        <!-- Botón Ingresar -->
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#272727"
-            android:text="INGRESAR"
-            android:textColor="#ffff"
-            android:textStyle="bold" />
-
-        <!-- Botón Registrarse -->
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#272727"
-            android:text="REGISTRARSE"
-            android:textColor="#ffff"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+</LinearLayout>
