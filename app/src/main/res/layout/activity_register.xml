@@ -1,64 +1,71 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal|top"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="#cbddd1"
-    android:padding="16dp">
+    android:padding="32dp">
 
+    <TextView
+        android:id="@+id/tvRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="Registro de Cuenta"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <!-- Campo de texto para el nombre de usuario -->
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Nombre de usuario"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:layout_marginBottom="16dp" />
+        android:minHeight="48dp" />
+
     <EditText
         android:id="@+id/correo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo electronico"
+        android:layout_marginBottom="16dp"
+        android:hint="Correo electrónico"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:layout_marginBottom="16dp" />
+        android:minHeight="48dp" />
+
     <EditText
         android:id="@+id/numero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Numero"
+        android:layout_marginBottom="16dp"
+        android:hint="Número"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:layout_marginBottom="16dp" />
+        android:minHeight="48dp" />
+
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Contraseña"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:layout_marginBottom="16dp" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etPassword2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Confirmar contraseña"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:layout_marginBottom="16dp" />
+        android:minHeight="48dp" />
 
     <!-- Botón para iniciar sesión -->
     <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:backgroundTint="#272727"
-        android:textColor="#ffff"
-        android:text="Registrar"
-
-        />
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:text="Listo" />
 </LinearLayout>

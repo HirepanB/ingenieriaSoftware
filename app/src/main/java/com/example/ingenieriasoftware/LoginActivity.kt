@@ -4,7 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ingenieriasoftware.utilities.validations.data.PasswordValidator
+import com.example.ingenieriasoftware.utilities.validations.data.UsernameValidator
+import com.example.ingenieriasoftware.utilities.validations.forms.LoginValidator
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,21 +25,15 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             val username = etUsername.text.toString()
             val password = etPassword.text.toString()
+            val loginValidator = LoginValidator(username, password)
 
-            // Establece el OnClickListener para abrir LoginActivity2
-            btnLogin.setOnClickListener {
+            if (loginValidator.isValid()) {
+                Toast.makeText(this, "Bienvenid@ $username", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, menuPrincipal::class.java)
-                startActivity(intent) // Abre LoginActivity2
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, loginValidator.message, Toast.LENGTH_SHORT).show()
             }
-
-//            // Validación simple (puedes agregar validaciones más complejas según sea necesario)
-//            if (username.isNotEmpty() && password.isNotEmpty()) {
-//                // Lógica de inicio de sesión (aquí puedes validar las credenciales, por ejemplo)
-//                Toast.makeText(this, "Bienvenido, $username", Toast.LENGTH_SHORT).show()
-//            } else {
-//                // Muestra un mensaje de error si los campos están vacíos
-//                Toast.makeText(this, "Por favor, ingrese usuario y contraseña", Toast.LENGTH_SHORT).show()
-//            }
         }
     }
 }
