@@ -2,51 +2,45 @@ package com.example.ingenieriasoftware.localstorage.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ingenieriasoftware.localstorage.entities.Item
-import com.example.ingenieriasoftware.localstorage.repositories.ItemRepository
+import com.example.ingenieriasoftware.localstorage.entities.Inventory
+import com.example.ingenieriasoftware.localstorage.repositories.InventoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ItemViewModel @Inject constructor(private val repository: ItemRepository) : ViewModel() {
-    fun addItem(item: Item) {
+class InventoryEntityViewModel @Inject constructor(private val repository: InventoryRepository) : ViewModel() {
+
+    fun addInventory(inventory: Inventory) {
         viewModelScope.launch {
             try {
-                repository.insertItem(item)
+                repository.insertInventory(inventory)
             } catch (e: IllegalArgumentException) {
                 // Manejo del error, por ejemplo: mostrar un mensaje al usuario.
             }
         }
     }
 
-    fun getItemById(id: String, callback: (Item?) -> Unit) {
+    fun getInventories(callback: (List<Inventory>) -> Unit) {
         viewModelScope.launch {
-            val item = repository.getItemById(id)
-            callback(item)
-        }
-    }
-
-    fun getItems(callback: (List<Item>) -> Unit) {
-        viewModelScope.launch {
-            val items = repository.getAllItems()
+            val items = repository.getAllInventories()
             callback(items)
         }
     }
 
-    fun updateItem(item: Item) {
+    fun updateInventory(inventory: Inventory) {
         viewModelScope.launch {
             try {
-                repository.updateItem(item)
+                repository.updateInventory(inventory)
             } catch (e: IllegalArgumentException) {
                 // Manejo del error
             }
         }
     }
 
-    fun deleteItem(item: Item) {
+    fun deleteInventory(inventory: Inventory) {
         viewModelScope.launch {
-            repository.deleteItem(item)
+            repository.deleteInventory(inventory)
         }
     }
 }

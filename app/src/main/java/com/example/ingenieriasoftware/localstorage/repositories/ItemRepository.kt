@@ -9,7 +9,7 @@ class ItemRepository(private val itemDao: ItemDao) {
         itemDao.insertItem(item)
     }
 
-    suspend fun getItemById(id: Int): Item? {
+    suspend fun getItemById(id: String): Item? {
         return itemDao.getItemById(id)
     }
 

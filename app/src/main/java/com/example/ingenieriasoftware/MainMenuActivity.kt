@@ -1,29 +1,23 @@
 package com.example.ingenieriasoftware
 
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.ingenieriasoftware.databinding.ActivityMainMenuBinding
-import com.example.ingenieriasoftware.localstorage.AppDatabase
-import com.example.ingenieriasoftware.localstorage.viewmodels.ItemViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainMenuActivity : AppCompatActivity() {
+class MainMenuActivity : AppCompatActivity(), NewInventoryDialog.NoticeDialogListener {
 
     private lateinit var binding: ActivityMainMenuBinding
-    private val itemViewModel: ItemViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        try {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
@@ -35,28 +29,31 @@ class MainMenuActivity : AppCompatActivity() {
         val navController = navigationHost.navController
 
         navView.setupWithNavController(navController)
+    }
 
-
-            // Consulta inicial: Obtener todos los items
-            itemViewModel.getItems { items ->
-                if (items.isNotEmpty()) {
-                    items.forEach { item ->
-                        Log.i("yop", "Item encontrado: " +
-                                "id: ${item.id}\n" +
-                                "name: ${item.name}\n" +
-                                "code: ${item.code}\n" +
-                                "expirable: ${item.expirable}\n" +
-                                "minAmount: ${item.minAmount}\n" +
-                                "imageString: ${item.imageString}")
-                    }
-                } else {
-                    Log.i("yop", "No hay items disponibles.")
+    override fun onDialogPositiveClick(dialog: DialogFragment) {
+        baseContext.let {
+            val fragManager = supportFragmentManager
+            fragManager.let {
+                val current = getVisibleFragment()
+                current?.let {
+                    fragManager.beginTransaction().detach(it).commit()
+                    fragManager.beginTransaction().attach(it).commit()
                 }
             }
-
-
-        } catch (e: Exception) {
-            Log.e("yop", e.message ?: "")
         }
+    }
+
+    fun getVisibleFragment(): Fragment? {
+        val fragmentManager: FragmentManager = this@MainMenuActivity.supportFragmentManager
+        val fragments: List<Fragment> = fragmentManager.fragments
+        for (fragment in fragments) {
+            if (fragment.isVisible) return fragment
+        }
+        return null
+    }
+
+    override fun onDialogNegativeClick(dialog: DialogFragment) {
+        TODO("Not yet implemented")
     }
 }

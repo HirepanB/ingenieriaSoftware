@@ -1,7 +1,9 @@
 <!-- layout_menu_principal.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/frag_inventory"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal|top"
     android:orientation="vertical">
@@ -11,36 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="2"
-        android:padding="20dp">
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/ly_btn_open_inventory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:orientation="vertical">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_new_inventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/primary"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/baseline_add_24"
+        app:tint="@android:color/white" />
 
-            <ImageButton
-                android:id="@+id/btn_open_inventory"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:backgroundTint="@color/primary"
-                android:clickable="true"
-                android:contentDescription="@string/open_inventory"
-                app:srcCompat="@drawable/baseline_food_bank_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Despensa"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-
-
-
-    </GridLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
