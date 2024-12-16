@@ -1,12 +1,16 @@
 package com.example.ingenieriasoftware
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ingenieriasoftware.utilities.validations.forms.RegisterValidator
 
 class RegisterActivity : AppCompatActivity() {
+
+    val baseUrl = "http://localhost:5000"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +31,14 @@ class RegisterActivity : AppCompatActivity() {
             val numero = etNumero.text.toString()
             val password = etPassword.text.toString()
             val password2 = etPassword2.text.toString()
+            val registerValidator = RegisterValidator(username, correo, numero, password, password2)
 
-            // Validación de los campos
-            if (username.isNotEmpty() && correo.isNotEmpty() && numero.isNotEmpty() && password.isNotEmpty() && password2.isNotEmpty()) {
-                // Verifica que las contraseñas coincidan
-                if (password == password2) {
-                    // Si las contraseñas coinciden, puedes continuar con el registro
-                    // Aquí podrías hacer un llamado a una base de datos o a un API
-                    Toast.makeText(this, "Registro exitoso!", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Muestra un error si las contraseñas no coinciden
-                    Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
-                }
+            if (registerValidator.isValid()) {
+                Toast.makeText(this, "Registro exitoso, por favor inicia sesión", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             } else {
-                // Muestra un mensaje de error si algún campo está vacío
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, registerValidator.message, Toast.LENGTH_SHORT).show()
             }
         }
     }

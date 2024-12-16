@@ -1,26 +1,37 @@
 package com.example.ingenieriasoftware.utilities.validations.forms
 
-import okhttp3.Call
-import okhttp3.Callback
+import okhttp3.*
+import java.io.IOException
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.RequestBody
-import okhttp3.Response
 import org.json.JSONObject
-import java.io.IOException
 
-
-class LoginValidator(
+class RegisterValidator(
     private val username: String,
-    private val password: String
+    private val email: String,
+    private val phoneNumber: String,
+    private val password: String,
+    private val repeatPassword: String,
 ) : FormValidator() {
 
-    val baseUrl = "http://localhost:5000"
+    val baseUrl = "http://192.168.100.139:5000"
 
     override fun checkFormat(): Boolean {
         if (!USERNAME_REGEX.matches(username)) {
             message = "Nombre de usuario inválido"
+            return false
+        }
+        if (!EMAIL_REGEX.matches(email)) {
+            message = "Email inválido"
+            return false
+        }
+        if (!PHONE_REGEX.matches(phoneNumber)) {
+            message = "Número inválido"
+            return false
+        }
+        if (password != repeatPassword) {
+            message = "Las contraseñas no coinciden"
             return false
         }
         if (!PASSWORD_REGEX.matches(password)) {
@@ -31,13 +42,13 @@ class LoginValidator(
     }
 
     override fun checkData(): Boolean {
-        login(username, password) { loginResponse ->
-            println("Login Response: $loginResponse")
+        register(username, password) { response ->
+            println("Register Response: $response")
         }
         return true
     }
 
-    private fun login(username: String, password: String, callback: (String?) -> Unit) {
+    private fun register(username: String, password: String, callback: (String?) -> Unit) {
         val client = OkHttpClient()
 
         val json = JSONObject()
@@ -47,7 +58,7 @@ class LoginValidator(
         val body = RequestBody.create("application/json".toMediaType(), json.toString())
 
         val request = Request.Builder()
-            .url("$baseUrl/login")
+            .url("$baseUrl/register")
             .post(body)
             .build()
 
