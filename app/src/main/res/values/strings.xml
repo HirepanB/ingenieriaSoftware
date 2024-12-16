@@ -18,4 +18,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="open_inventory">openInventory</string>
+    <string name="title_activity_inventory_list">InventoryListActivity</string>
 </resources>

@@ -1,8 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- layout_menu_principal.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cbddd1"
-    android:padding="16dp"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal|top"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:id="@+id/layout_inventories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:id="@+id/btn_open_inventory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:backgroundTint="@color/primary"
+                android:contentDescription="@string/open_inventory"
+                app:srcCompat="@drawable/baseline_food_bank_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Despensa"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+
+
+    </GridLayout>
+</LinearLayout>
