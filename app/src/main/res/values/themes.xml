@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.IngenieriaSoftware" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnSurface">@color/dark_gray</item>
         <item name="colorOnPrimary">@color/text_on_primary</item>
 
         <item name="colorSecondary">@color/secondary</item>

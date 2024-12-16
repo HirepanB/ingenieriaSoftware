@@ -10,7 +10,7 @@ interface ItemDao {
     suspend fun insertItem(item: Item)
 
     @Query("SELECT * FROM items WHERE id = :id")
-    suspend fun getItemById(id: Int): Item?
+    suspend fun getItemById(id: String): Item?
 
     @Query("SELECT * FROM items")
     suspend fun getAllItems(): List<Item>
