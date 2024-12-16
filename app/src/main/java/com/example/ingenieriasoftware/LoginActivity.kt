@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (loginValidator.isValid()) {
                 Toast.makeText(this, "Bienvenid@ $username", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, menuPrincipal::class.java)
+                val intent = Intent(this, MainMenuActivity::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, loginValidator.message, Toast.LENGTH_SHORT).show()

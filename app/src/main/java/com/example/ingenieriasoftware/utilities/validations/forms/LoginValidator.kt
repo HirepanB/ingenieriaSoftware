@@ -31,9 +31,9 @@ class LoginValidator(
     }
 
     override fun checkData(): Boolean {
-        login(username, password) { loginResponse ->
-            println("Login Response: $loginResponse")
-        }
+//        login(username, password) { loginResponse ->
+//            println("Login Response: $loginResponse")
+//        }
         return true
     }
 

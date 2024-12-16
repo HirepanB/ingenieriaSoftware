@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -39,7 +41,11 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.hilt.android.v2511)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.okhttp)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

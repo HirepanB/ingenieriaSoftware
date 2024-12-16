@@ -11,4 +11,11 @@
     <string name="menu_home">Inventarios</string>
     <string name="menu_gallery">Lista de productos</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="title_inventory">Inventario</string>
+    <string name="title_items">Articulos</string>
+    <string name="title_activity_temp">Temp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
