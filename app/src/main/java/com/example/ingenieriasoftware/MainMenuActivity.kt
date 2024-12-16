@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -22,25 +23,20 @@ class MainMenuActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         try {
-
-
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
 
+        val navigationHost =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main_menu) as NavHostFragment
+        val navController = navigationHost.navController
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main_menu)
         navView.setupWithNavController(navController)
 
-        } catch (e : Exception) {
-            e.message?.let { Log.i("yop", it) }
-        }
 
-        try {
             // Consulta inicial: Obtener todos los items
             itemViewModel.getItems { items ->
                 if (items.isNotEmpty()) {
@@ -57,9 +53,6 @@ class MainMenuActivity : AppCompatActivity() {
                     Log.i("yop", "No hay items disponibles.")
                 }
             }
-
-            AppDatabase.getInstance(applicationContext).close()
-            applicationContext.deleteDatabase("app_database")
 
 
         } catch (e: Exception) {
